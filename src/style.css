@@ -32,5 +32,56 @@
 }
 
 @layer components {
+  .app-container {@apply container mx-auto px-4;}
+  .app-grid {@apply grid grid-cols-12 gap-6;}
+  .app-content {@apply col-span-12 lg:col-span-8;}
+  .app-aside {@apply col-span-12 lg:col-span-4;}
 
+  .card {@apply rounded-2xl bg-neutral-900/70 p-5 shadow-sm ring-1 ring-white/10;}
+
+  .muted {@apply text-sm text-neutral-400; }
+
+  .nav-bar {@apply grid grid-cols-12 items-center py-3 border-b border-white/10;}
+  .nav-title{@apply col-span-12 md:col-span-3 text-lg font-semibold;}
+  .nav-items{@apply col-span-12 md:col-span-9 flex flex-wrap gap-4 md:justify-end mt-2 md:mt-0;}
+  .btn-link {@apply hover:underline;}
+  .footer-bar{@apply border-t border-white/10 text-sm text-neutral-400;}
+
+  .link-active { @apply text-neutral-100 underline decoration-neutral-200; }
+
+
+  .only-mobile {display: inline-flex;}
+  .only-desktop {display: none;}
+
+  @media (min-width: 64rem) {
+    .only-mobile {display: none;}
+    .only-desktop {display: flex;}
+  }
+
+  .burger {
+    @apply items-center justify-center rounded-xl p-2
+    border border-white/10 hover:bg-neutral-900
+    focus-visible:outline-hidden
+    focus-visible:ring-2 focus-visible:ring-white/80
+    focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-950;
+  }
+
+  .drawer {@apply fixed inset-0 z-50 hidden;}
+  .drawer.is-open {@apply block;}
+  .drawer-backdrop {@apply absolute inset-0 bg-black/40;}
+
+  .drawer-panel {
+    @apply absolute top-0 right-0 h-full w-80 max-w-[85%]
+    bg-neutral-950/95 ring-1 ring-white/15 p-5
+    transition-transform duration-200 ease-out translate-x-1;
+  }
+
+  .drawer:not(.is-open) .drawer-panel {@apply translate-x-full;}
+  .drawer-nav-items {@apply flex flex-col gap-3 mt-4;}
+  .drawer-close {
+    @apply absolute top-3 right-3 p-2 rounded-lg hover:bg-neutral-900
+    focus-visible:outline-hidden
+    focus-visible:ring-2 focus-visible:ring-white/80
+    focus-visible:ring-offset-2 focus-visible:ring-offset-neutral-950;
+  }
 }
